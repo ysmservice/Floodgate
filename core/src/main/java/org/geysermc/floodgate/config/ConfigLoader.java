@@ -49,7 +49,7 @@ public final class ConfigLoader {
 
     @SuppressWarnings("unchecked")
     public <T extends FloodgateConfig> T load() {
-        String templateFile = "config.yml";
+        String templateFile = "flconfig.yml";
         if (ProxyFloodgateConfig.class.isAssignableFrom(configClass)) {
             templateFile = "proxy-" + templateFile;
         }
@@ -63,7 +63,7 @@ public final class ConfigLoader {
         ConfigUtilities utilities =
                 ConfigUtilities.builder()
                         .fileCodec(PathFileCodec.of(dataDirectory))
-                        .configFile("config.yml")
+                        .configFile("flconfig.yml")
                         .templateReader(ResourceTemplateReader.of(getClass()))
                         .template(templateFile)
                         .changes(Changes.builder()
